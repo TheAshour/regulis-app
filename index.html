@@ -1,1 +1,1008 @@
-X
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="reGulis: Aviation Compliance Intelligence Platform. Complete IOSA audit readiness from ISM 18 analysis to gap remediation, powered by intelligent automation.">
+    <meta name="keywords" content="IOSA audit, ISM 18, aviation compliance, regulatory intelligence, audit readiness">
+    <meta property="og:title" content="reGulis - Aviation Compliance Intelligence">
+    <meta property="og:description" content="The complete IOSA audit readiness platform. From ISM 18 standards analysis to gap remediation — powered by intelligent automation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.regulis.org">
+    <meta name="theme-color" content="#0a1628">
+    <title>reGulis - Aviation Compliance Intelligence Platform</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230a1628' width='32' height='32'/><path fill='%232563eb' d='M16 4 L22 8 L22 16 L16 20 L10 16 L10 8 Z' opacity='0.9'/><circle cx='16' cy='12' r='2.5' fill='%23ffffff'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1f2937;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Color Scheme */
+        :root {
+            --navy: #0a1628;
+            --blue: #2563eb;
+            --blue-light: #3b82f6;
+            --blue-dark: #1d4ed8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2.5rem;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #2563eb 100%);
+            color: #ffffff;
+            padding: 6rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-demo {
+            background: #ffffff;
+            color: var(--navy);
+        }
+
+        .btn-demo:hover {
+            background: var(--gray-100);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: var(--gray-50);
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Modules Section */
+        .modules {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .modules-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--blue-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .module-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .module-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--blue), var(--blue-light));
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .module-card h3 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--gray-50);
+            padding: 5rem 1.5rem;
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--blue);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            width: calc(100% + 2rem);
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 50%, transparent 100%);
+            display: none;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 5rem 1.5rem;
+        }
+
+        .security-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .security-content h2 {
+            font-size: 2.25rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .security-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .security-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .security-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .security-visual {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            border-radius: 1rem;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .security-visual svg {
+            width: 200px;
+            height: 200px;
+            opacity: 0.9;
+        }
+
+        /* For Aviation Operators */
+        .for-operators {
+            background: var(--gray-50);
+            padding: 5rem 1.5rem;
+        }
+
+        .operators-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .operators-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .operator-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--blue);
+        }
+
+        .operator-item h4 {
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .operator-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: #ffffff;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none !important;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .security-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-section a {
+                display: inline-block;
+                margin: 0 0.75rem 0.75rem 0;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            .step:not(:last-child)::after {
+                display: block;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+
+        /* Scroll animation setup */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .scroll-animate.visible {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="8" width="20" height="16" rx="2" stroke="#2563eb" stroke-width="2" fill="none"/>
+                    <path d="M16 11v10M12 14h8" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="22" cy="10" r="1" fill="#2563eb"/>
+                </svg>
+                reGulis
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#modules">Platform</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="https://app.regulis.org" class="btn btn-primary">Login</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="fade-in">Aviation Compliance Intelligence</h1>
+                <p class="fade-in stagger-1">The complete IOSA audit readiness platform. From ISM 18 standards analysis to gap remediation — powered by intelligent automation.</p>
+                <div class="hero-buttons fade-in stagger-2">
+                    <button class="btn btn-demo" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Request Demo</button>
+                    <a href="https://app.regulis.org" class="btn btn-primary">Login to Platform</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>927</h3>
+                    <p>ISARPs Tracked</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6</h3>
+                    <p>Operational Manuals</p>
+                </div>
+                <div class="stat-item">
+                    <h3>385</h3>
+                    <p>Gap Recommendations</p>
+                </div>
+                <div class="stat-item">
+                    <h3>ISM 18</h3>
+                    <p>Edition Coverage</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section class="modules" id="modules">
+            <div class="section-header">
+                <h2>10 Integrated Modules</h2>
+                <p>Everything you need to achieve IOSA compliance. From requirements tracking to audit simulation.</p>
+            </div>
+
+            <div class="modules-container">
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">▤</div>
+                    <h3>COMPASS</h3>
+                    <p>Standards browser for all 927 IOSA requirements with detailed mappings and coverage analysis.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">📁</div>
+                    <h3>VAULT</h3>
+                    <p>Document management system for operational manuals with automatic indexing and search.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">📖</div>
+                    <h3>MANUALS</h3>
+                    <p>Interactive manual workspace with cross-references and intelligent navigation.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">✓</div>
+                    <h3>INSPECTOR</h3>
+                    <p>Evidence review and multi-step approval workflow for requirement compliance.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">⊞</div>
+                    <h3>BLUEPRINT</h3>
+                    <p>Compliance mapping matrix showing requirements-to-manual relationships at a glance.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">⚡</div>
+                    <h3>ARIA</h3>
+                    <p>AI-powered regulatory intelligence assistant with multi-advisor synthesis.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">🎯</div>
+                    <h3>RESOLVE</h3>
+                    <p>Gap remediation tracker with prioritized recommendations and action tracking.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">🔍</div>
+                    <h3>REHEARSAL</h3>
+                    <p>Audit simulation with weighted question selection and readiness scoring.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">📊</div>
+                    <h3>REPORTS</h3>
+                    <p>Automated compliance report generation with executive summaries and analysis.</p>
+                </div>
+
+                <div class="module-card scroll-animate">
+                    <div class="module-icon">📈</div>
+                    <h3>DASHBOARD</h3>
+                    <p>Real-time compliance overview with readiness scores and activity tracking.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works" id="how">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Three simple steps to audit readiness</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step scroll-animate">
+                    <div class="step-number">1</div>
+                    <h3>Import Standards</h3>
+                    <p>Load ISM 18 requirements automatically. All 927 ISARPs with detailed guidance and cross-references.</p>
+                </div>
+
+                <div class="step scroll-animate">
+                    <div class="step-number">2</div>
+                    <h3>Map Evidence</h3>
+                    <p>AI maps your operational manuals to each requirement. Identify gaps, overlaps, and coverage status instantly.</p>
+                </div>
+
+                <div class="step scroll-animate">
+                    <div class="step-number">3</div>
+                    <h3>Close Gaps</h3>
+                    <p>Prioritized recommendations drive remediation. Track progress, assign actions, and achieve compliance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="security" id="security">
+            <div class="security-container">
+                <div class="security-content">
+                    <h2>Enterprise-Grade Security</h2>
+                    <ul class="security-list">
+                        <li>JWT authentication with role-based access control</li>
+                        <li>Tenant isolation and multi-operator support</li>
+                        <li>End-to-end encryption at rest and in transit</li>
+                        <li>Complete audit trail for compliance activities</li>
+                        <li>GDPR and data protection compliance</li>
+                        <li>SOC 2 and ISO 27001 aligned controls</li>
+                    </ul>
+                    <p style="color: var(--text-secondary); margin-top: 1.5rem;">Your compliance data is protected by industry-standard security practices. We maintain the highest standards of data protection and confidentiality.</p>
+                </div>
+
+                <div class="security-visual">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="80" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+                        <circle cx="100" cy="100" r="60" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+                        <path d="M100 40v120M40 100h120" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+                        <circle cx="100" cy="100" r="15" fill="#ffffff" opacity="0.8"/>
+                        <path d="M85 85l5 5l15-15" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Aviation Operators -->
+        <section class="for-operators">
+            <div class="operators-container">
+                <div class="section-header">
+                    <h2>Built for Aviation Operators</h2>
+                    <p>Designed specifically for IATA member airlines preparing for IOSA audit readiness</p>
+                </div>
+
+                <div class="operators-list">
+                    <div class="operator-item scroll-animate">
+                        <h4>IATA Member Airlines</h4>
+                        <p>Preparing for IOSA renewal with ISM Edition 18 as the new operational standard.</p>
+                    </div>
+
+                    <div class="operator-item scroll-animate">
+                        <h4>Regulatory Compliance Teams</h4>
+                        <p>Managing complex standards, coordinating across departments, and tracking evidence systematically.</p>
+                    </div>
+
+                    <div class="operator-item scroll-animate">
+                        <h4>Quality & Safety Leaders</h4>
+                        <p>Implementing continuous improvement programs and maintaining audit-ready documentation.</p>
+                    </div>
+
+                    <div class="operator-item scroll-animate">
+                        <h4>Operations Management</h4>
+                        <p>Ensuring operational manuals reflect regulatory requirements and remediation recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="https://app.regulis.org">Platform</a></li>
+                    <li><a href="#modules">Features</a></li>
+                    <li><a href="#security">Security</a></li>
+                    <li><a href="#how">How It Works</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Sales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 reGulis — Aviation Compliance Intelligence. Built for Sky Vision Airlines and the global aviation community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Menu toggle for mobile
+        const menuToggle = document.getElementById('menuToggle');
+        menuToggle.addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = '#ffffff';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderBottom = '1px solid var(--border)';
+                navLinks.style.zIndex = '999';
+            }
+        });
+
+        // Close menu when clicking nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.style.display = 'none';
+            });
+        });
+
+        // Smooth scroll and accessibility
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
